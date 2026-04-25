@@ -1,0 +1,103 @@
+---
+import { Badge } from '@/components/ui/badge';
+---
+
+<section class="min-h-[calc(100vh-64px)] mt-2 bg-background flex flex-col">
+
+  <!-- Main two-column content -->
+  <div class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-12 lg:gap-20 py-16 lg:py-24">
+
+    <!-- Left: Text content -->
+    <div class="flex-1 max-w-xl">
+
+      <!-- Logo in hero -->
+      <div class="mb-8 hero-anim delay-100">
+        <img
+          src="/logotipo-bee-house.png"
+          alt="BeeHouse"
+          class="h-12 w-auto"
+          transition:name="main-logo"
+        />
+      </div>
+
+      <Badge
+        variant="outline"
+        className="h-auto text-xs font-semibold px-3 py-1 bg-primary/10 border-primary/20 text-primary mb-5 hero-anim delay-100"
+      >
+        Promotoría Retail Digital · México
+      </Badge>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] tracking-tight mt-4 hero-anim delay-200">
+        Tu marca presente en cada
+        <span class="text-primary"> punto de venta</span>
+      </h1>
+
+      <p class="mt-6 text-lg text-muted-foreground leading-relaxed hero-anim delay-300">
+        Conecta con promotores freelance cuando y donde los necesitas.
+        Programa visitas, gestiona ejecución y supervisa resultados en tiempo real.
+      </p>
+
+      <div class="mt-10 hero-anim delay-500">
+        <a
+          href="#como-funciona"
+          class="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-150"
+        >
+          Descubre cómo funciona
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Hexagonal brand visual -->
+    <div class="hidden lg:flex flex-shrink-0 items-center justify-center hero-anim-fade delay-300">
+      <div class="relative w-[380px] h-[380px]">
+
+        <!-- Outer hex fill -->
+        <svg class="absolute inset-0 w-full h-full text-primary" viewBox="0 0 200 230" fill="currentColor">
+          <polygon points="100,5 195,55 195,175 100,225 5,175 5,55" fill-opacity="0.06"/>
+        </svg>
+
+        <!-- Outer hex border -->
+        <svg class="absolute inset-0 w-full h-full text-primary" viewBox="0 0 200 230" fill="none">
+          <polygon points="100,5 195,55 195,175 100,225 5,175 5,55" stroke="currentColor" stroke-opacity="0.2" stroke-width="1.5"/>
+        </svg>
+
+        <!-- Inner hex border -->
+        <svg class="absolute inset-0 w-full h-full text-primary" viewBox="0 0 200 230" fill="none">
+          <polygon points="100,35 168,76 168,154 100,195 32,154 32,76" stroke="currentColor" stroke-opacity="0.1" stroke-width="1"/>
+        </svg>
+
+        <!-- Icon centered -->
+        <img
+          src="/icon.png"
+          alt=""
+          class="absolute inset-0 m-auto w-36 h-36 object-contain drop-shadow-sm"
+        />
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Stats bar -->
+  <div class="border-t border-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 hero-anim-fade delay-700">
+      <div class="grid grid-cols-3 gap-8 divide-x divide-border">
+        <div class="text-center">
+          <div class="text-2xl font-bold text-primary">100%</div>
+          <div class="text-xs text-muted-foreground mt-1">Digital y en tiempo real</div>
+        </div>
+        <div class="text-center">
+          <div class="text-xl font-bold text-primary">Bajo demanda</div>
+          <div class="text-xs text-muted-foreground mt-1">Promotores disponibles</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-primary">360°</div>
+          <div class="text-xs text-muted-foreground mt-1">Visibilidad de ejecución</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

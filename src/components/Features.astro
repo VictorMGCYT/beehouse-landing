@@ -1,0 +1,73 @@
+---
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
+---
+
+<section id="caracteristicas" class="py-24 bg-background">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="text-center mb-14" data-animate>
+      <Badge variant="outline" className="h-auto text-xs font-semibold px-3 py-1 bg-primary/10 border-primary/20 text-primary">
+        Plataforma completa
+      </Badge>
+      <h2 class="mt-4 text-3xl sm:text-4xl font-bold text-foreground">
+        Todo lo que necesitas en
+        <span class="text-primary"> un solo lugar</span>
+      </h2>
+      <p class="mt-3 text-base text-muted-foreground max-w-md mx-auto">
+        Herramientas diseñadas para que marcas y promotores trabajen de manera coordinada y eficiente.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+      <Card
+        className="py-0 bg-card border border-border hover:border-primary/30 hover:shadow-sm transition-all duration-200 group"
+        data-animate data-delay="0"
+      >
+        <CardContent className="p-6">
+          <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
+            <svg class="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="text-sm font-semibold text-foreground mb-2">Programación de visitas</h3>
+          <p class="text-xs text-muted-foreground leading-relaxed">Agenda visitas a puntos de venta rápidamente con todos los detalles necesarios para el promotor.</p>
+        </CardContent>
+      </Card>
+
+      <Card
+        className="py-0 bg-card border border-border hover:border-primary/30 hover:shadow-sm transition-all duration-200 group"
+        data-animate data-delay="100"
+      >
+        <CardContent className="p-6">
+          <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
+            <svg class="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+          </div>
+          <h3 class="text-sm font-semibold text-foreground mb-2">Seguimiento en tiempo real</h3>
+          <p class="text-xs text-muted-foreground leading-relaxed">Monitorea cada visita desde que inicia hasta que se completa, con evidencias fotográficas incluidas.</p>
+        </CardContent>
+      </Card>
+
+      <Card
+        className="py-0 bg-card border border-border hover:border-primary/30 hover:shadow-sm transition-all duration-200 group"
+        data-animate data-delay="200"
+      >
+        <CardContent className="p-6">
+          <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
+            <svg class="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <h3 class="text-sm font-semibold text-foreground mb-2">Reportes de ejecución</h3>
+          <p class="text-xs text-muted-foreground leading-relaxed">Genera reportes detallados con métricas y análisis para tomar mejores decisiones comerciales.</p>
+        </CardContent>
+      </Card>
+
+    </div>
+  </div>
+</section>
