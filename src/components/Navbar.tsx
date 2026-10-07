@@ -24,7 +24,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 bg-background border-b border-border transition-shadow duration-200 ${
+      className={`fixed top-0 left-0 right-0 z-50 bg-background/45 backdrop-blur-md border-b border-border transition-shadow duration-200 ${
         scrolled ? "shadow-sm" : "shadow-none"
       }`}
     >

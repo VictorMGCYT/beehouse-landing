@@ -1,0 +1,249 @@
+---
+// Coordenadas en el viewBox 0 0 100 60 (x: 0-100, y: 0-60).
+// `d` es la línea punteada; `end` es donde termina y se ancla la pastilla.
+// `side` indica hacia dónde crece la pastilla desde el punto final.
+const VB_W = 100;
+const VB_H = 60;
+
+const links = [
+  {
+    label: "Para promotores",
+    href: "#para-promotores",
+    d: "M 43 22 H 34 V 8 H 30",
+    end: [30, 8],
+    side: "left",
+  },
+  {
+    label: "Para marcas",
+    href: "#para-marcas",
+    d: "M 38 30 H 20 V 42 H 10",
+    end: [10, 42],
+    side: "left",
+  },
+  {
+    label: "Características",
+    href: "#caracteristicas",
+    d: "M 55 22 H 66 V 8 H 70",
+    end: [70, 8],
+    side: "right",
+  },
+  {
+    label: "¿Cómo funciona?",
+    href: "#como-funciona",
+    d: "M 60 34 H 76 V 40 H 80",
+    end: [80, 40],
+    side: "right",
+  },
+] as const;
+
+// Etiquetas sueltas sobre las líneas, como en el diseño
+const tags = [
+  { text: "Freelance", at: [34, 15] },
+  { text: "Conecta", at: [20, 36] },
+  { text: "Todo lo que necesitas", at: [76, 30] },
+] as const;
+
+// Palabras que se autoescriben después de "En cada"
+const typedWords = ["tienda", "ciudad", "punto de venta", "rincón de México"];
+
+const pos = ([x, y]: readonly [number, number]) => ({
+  left: `${(x / VB_W) * 100}%`,
+  top: `${(y / VB_H) * 100}%`,
+});
+---
+
+<section class="relative flex min-h-[calc(80vh)] items-center justify-center overflow-hidden">
+  <!-- Panal decorativo en los laterales (solo xl) -->
+  <div
+    class="honeycomb pointer-events-none absolute inset-0 hidden lg:block"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative w-full max-w-6xl md:aspect-100/60">
+    <!-- Líneas punteadas (solo desktop; en móvil no hay espacio) -->
+    <svg
+      class="pointer-events-none absolute inset-0 hidden h-full w-full lg:block"
+      viewBox={`0 0 ${VB_W} ${VB_H}`}
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      {links.map((l, i) => (
+        <path
+          d={l.d}
+          class="hero-line"
+          style={`animation-delay: ${0.4 + i * 0.15}s`}
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          vector-effect="non-scaling-stroke"
+        />
+      ))}
+    </svg>
+
+    <!-- Pastillas al final de cada línea -->
+    {links.map((l) => (
+      <a
+        href={l.href}
+        style={pos(l.end)}
+        class:list={[
+          "absolute z-20 hidden -translate-y-1/2 rounded-full bg-amber-400 px-4 py-1 text-sm font-semibold whitespace-nowrap text-white shadow-md transition hover:bg-amber-500 lg:block",
+          l.side === "left" ? "-translate-x-full" : "",
+        ]}
+      >
+        {l.label}
+      </a>
+    ))}
+
+    {tags.map((t) => (
+      <span
+        style={pos(t.at)}
+        class="absolute hidden -translate-x-1/2 -translate-y-1/2 bg-background px-1 text-xs text-amber-950/70 lg:block"
+      >
+        {t.text}
+      </span>
+    ))}
+
+    <!-- Logo -->
+    <div class="relative z-10 flex flex-col h-full items-center justify-center">
+      <div class="delay-100">
+        <img
+          src="/logotipo-bee-house.png"
+          alt="BeeHouse"
+          class="animate-fade-in-up h-40 w-auto md:h-80"
+          transition:name="main-logo"
+        />
+        <div class="animate-expand-horizontally h-3 w-full bg-amber-950"></div>
+      </div>
+      <div class="absolute hidden lg:block bottom-20 left-1/2 -translate-x-1/2 translate-y-1/2 text-center text-4xl font-bold">
+        <p class="text-amber-600">Tu marca presente</p>
+        <p class="text-amber-850">
+          En cada{" "}
+          <span
+            class="typewriter text-amber-600"
+            data-words={JSON.stringify(typedWords)}
+          >
+            {typedWords[0]}
+          </span>
+          <span class="caret text-amber-600" aria-hidden="true">
+            |
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-line {
+    color: var(--color-amber-950);
+    opacity: 0.6;
+    /* 6px de trazo, 7px de espacio (non-scaling-stroke => píxeles reales) */
+    stroke-dasharray: 6 7;
+    animation:
+      line-in 0.8s ease-out both,
+      line-march 4s linear infinite;
+  }
+
+  /* Aparece con fade */
+  @keyframes line-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  /* Los puntos "caminan" hacia las pastillas */
+  @keyframes line-march {
+    to {
+      stroke-dashoffset: -26;
+    }
+  }
+
+  .honeycomb {
+    /* Celda de panal: un hexágono (radio 24) + el lado vertical que lo une con la fila de abajo.
+       Ancho = √3·r ≈ 41.57, alto = 3·r = 72 */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='41.569' height='72' viewBox='0 0 41.569 72'%3E%3Cpath d='M20.785 0L41.569 12V36L20.785 48L0 36V12Z M20.785 48V72' fill='none' stroke='%23f59e0b' stroke-width='1.2'/%3E%3C/svg%3E");
+    background-size: 41.569px 72px;
+    opacity: 0.35;
+    /* Visible en los bordes, se desvanece hacia el centro */
+    mask-image:
+      linear-gradient(
+        to right,
+        black 0%,
+        transparent 28%,
+        transparent 72%,
+        black 100%
+      ),
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 25%,
+        black 75%,
+        transparent 100%
+      );
+    mask-composite: intersect;
+  }
+
+  .caret {
+    margin-left: 2px;
+    font-weight: 300;
+    animation: caret-blink 1s step-end infinite;
+  }
+
+  @keyframes caret-blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-line,
+    .caret {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const TYPE_MS = 90;
+  const DELETE_MS = 45;
+  const HOLD_MS = 1600;
+
+  let timer: ReturnType<typeof setTimeout> | undefined;
+
+  function startTypewriter() {
+    clearTimeout(timer);
+    const el = document.querySelector<HTMLElement>(".typewriter");
+    if (!el) return;
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const words: string[] = JSON.parse(el.dataset.words ?? "[]");
+    let wordIdx = 0;
+    let charIdx = words[0].length;
+    let deleting = true;
+
+    const tick = () => {
+      const word = words[wordIdx];
+      charIdx += deleting ? -1 : 1;
+      el.textContent = word.slice(0, charIdx);
+
+      if (!deleting && charIdx === word.length) {
+        deleting = true;
+        timer = setTimeout(tick, HOLD_MS);
+      } else if (deleting && charIdx === 0) {
+        deleting = false;
+        wordIdx = (wordIdx + 1) % words.length;
+        timer = setTimeout(tick, TYPE_MS * 3);
+      } else {
+        timer = setTimeout(tick, deleting ? DELETE_MS : TYPE_MS);
+      }
+    };
+
+    timer = setTimeout(tick, HOLD_MS);
+  }
+
+  // Con <ClientRouter /> los scripts corren una sola vez: re-iniciar en cada navegación
+  document.addEventListener("astro:page-load", startTypewriter);
+  document.addEventListener("astro:before-swap", () => clearTimeout(timer));
+</script>
