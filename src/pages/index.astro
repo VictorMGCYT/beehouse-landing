@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero.astro";
-import HowItWorksNew from "../components/HowItWorksNew.astro";
+import HowItWorksNew from "../components/HowItWorksNew";
 import ForBrands from "../components/ForBrands.astro";
 import ForPromoters from "../components/ForPromoters.astro";
 import Features from "../components/Features.astro";
@@ -16,8 +16,12 @@ import HoneycombDivider from "@/components/HoneycombDivider.astro";
   <Navbar client:load />
   <main>
     <HeroNew />
-    <HoneycombDivider seed={3} rows={3} class="bg-muted" />
-    <HowItWorksNew />
+    <HoneycombDivider
+      seed={3}
+      rows={3}
+      class="bg-muted timeline-view animate-fade-in animate-range-[entry_5%_contain_10%]"
+    />
+    <HowItWorksNew client:load />
     <ForBrands />
     <ForPromoters />
     <Features />

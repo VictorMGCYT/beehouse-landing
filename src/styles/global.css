@@ -189,3 +189,44 @@
 .delay-700 {
   animation-delay: 0.7s;
 }
+
+/* HowItWorksNew: resaltado tipo marcador */
+.highlight {
+  background: linear-gradient(transparent 55%, var(--color-amber-200) 55%);
+  color: inherit;
+  font-weight: 600;
+  padding: 0 0.1em;
+}
+
+/* HowItWorksNew: línea punteada que une las celdas (mismo estilo que el hero) */
+.connector {
+  position: absolute;
+  left: 2.5rem; /* centro de la celda (w-20 / 2) */
+  top: 5.25rem;
+  bottom: -2.25rem;
+  width: 2px;
+  transform: translateX(-50%);
+  background-image: linear-gradient(to bottom, var(--color-amber-950) 6px, transparent 6px);
+  background-size: 2px 13px;
+  opacity: 0.35;
+  animation: connector-march 1s linear infinite;
+}
+
+@media (width >= 40rem) {
+  .connector {
+    left: 3rem; /* w-24 / 2 */
+    top: 6.25rem;
+  }
+}
+
+@keyframes connector-march {
+  to {
+    background-position: 0 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connector {
+    animation: none;
+  }
+}
