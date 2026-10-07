@@ -230,3 +230,43 @@
     animation: none;
   }
 }
+
+/* CTAFinalNew: hexágono alargado (puntas a los lados) */
+.hex-frame {
+  clip-path: polygon(1.5rem 0, calc(100% - 1.5rem) 0, 100% 50%, calc(100% - 1.5rem) 100%, 1.5rem 100%, 0 50%);
+}
+
+/* Línea punteada que avanza (FeaturesNew; mismo estilo que el hero) */
+.dash-march {
+  stroke-dasharray: 6 7;
+  animation: dash-march 1s linear infinite;
+}
+
+@keyframes dash-march {
+  to {
+    stroke-dashoffset: -13;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dash-march {
+    animation: none;
+  }
+}
+
+/*
+  Revelado al hacer scroll con tailwind-animations.
+  Se combina con cualquier animación de la librería:
+    <div class="reveal animate-fade-in-up">
+  El shorthand `animation` de cada animate-* reinicia el timeline y el rango,
+  por eso van con !important (la librería hace lo mismo en timeline-*).
+  Sin soporte de scroll-driven animations, la animación corre al cargar.
+*/
+@utility reveal {
+  animation-timeline: view() !important;
+  animation-range: entry 10% cover 35% !important;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none !important;
+  }
+}

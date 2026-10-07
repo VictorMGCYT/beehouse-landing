@@ -37,32 +37,75 @@ export default function HowItWorksNew() {
       <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[5fr_6fr] lg:gap-20 lg:px-8">
         {/* Encabezado */}
         <div className="timeline-view animate-expand-vertically animate-range-[entry_5%_contain_20%]">
-          <div className="relative" data-animate>
-            <span className="inline-block rounded-full bg-amber-400 px-4 py-1 text-sm font-semibold text-white shadow-md">
+          {/* Tarro de miel: tapa + cuello + cuerpo */}
+          <div className="relative pt-16" data-animate>
+            {/* Tapa con la etiqueta */}
+            <div className="absolute top-0 left-1/2 z-10 w-3/5 -translate-x-1/2 rounded-2xl bg-amber-400 py-2 text-center text-sm font-semibold text-white shadow-md">
+              <span
+                className="absolute top-1.5 left-4 h-1.5 w-8 rounded-full bg-white/50"
+                aria-hidden="true"
+              />
               Proceso simple
-            </span>
+              <span
+                className="absolute inset-x-3 -bottom-1.5 -z-10 h-3 rounded-b-xl bg-amber-500"
+                aria-hidden="true"
+              />
+            </div>
 
-            <h2 className="mt-5 text-4xl leading-tight font-bold text-amber-950 sm:text-5xl">
-              ¿Cómo funciona{" "}
-              <span className="block text-amber-500">BeeHouse?</span>
-            </h2>
+            {/* Cuello: tapa el borde superior del cuerpo para que se vean unidos */}
+            <div
+              className="absolute top-10 left-1/2 z-1 h-6.5 w-1/2 -translate-x-1/2 border-x-2 border-amber-300 bg-amber-50"
+              aria-hidden="true"
+            />
 
-            <TypeIt
-              options={{
-                speed: 15,
-                waitUntilVisible: true,
-              }}
-              className="mt-5 max-w-md text-base leading-relaxed text-amber-950/75 sm:text-lg"
-            >
-              En tres pasos{" "}
-              <mark className="highlight">conecta tu marca con promotores</mark>{" "}
-              y lleva el control total de tus{" "}
-              <mark className="highlight">puntos de venta</mark>.
-            </TypeIt>
+            {/* Cuerpo */}
+            <div className="relative rounded-[2.5rem] border-2 border-amber-300 bg-amber-50 px-7 pt-10 pb-14 sm:px-10">
+              {/* Miel al fondo + reflejo del vidrio */}
+              <div
+                className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]"
+                aria-hidden="true"
+              >
+                <svg
+                  className="absolute inset-x-0 bottom-0 h-1/4 w-full text-amber-200"
+                  viewBox="0 0 100 20"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M0 4 Q12.5 0 25 4 T50 4 T75 4 T100 4 V20 H0Z"
+                    fill="currentColor"
+                    opacity="0.7"
+                  />
+                </svg>
+                <span className="absolute top-8 left-4 h-20 w-1.5 rounded-full bg-white" />
+                <span className="absolute top-30 left-4 h-1.5 w-1.5 rounded-full bg-white" />
+              </div>
+
+              <div className="relative">
+                <h2 className="text-4xl leading-tight font-bold text-amber-950 sm:text-5xl">
+                  ¿Cómo funciona{" "}
+                  <span className="block text-amber-500">BeeHouse?</span>
+                </h2>
+
+                <TypeIt
+                  options={{
+                    speed: 15,
+                    waitUntilVisible: true,
+                  }}
+                  className="mt-5 max-w-md text-base leading-relaxed text-amber-950/75 sm:text-lg"
+                >
+                  En tres pasos{" "}
+                  <mark className="highlight">
+                    conecta tu marca con promotores
+                  </mark>{" "}
+                  y lleva el control total de tus{" "}
+                  <mark className="highlight">puntos de venta</mark>.
+                </TypeIt>
+              </div>
+            </div>
 
             {/* Celdas decorativas */}
             <svg
-              className="pointer-events-none absolute -top-6 right-0 hidden h-24 w-24 opacity-60 sm:block lg:-right-6"
+              className="pointer-events-none absolute top-2 -right-2 hidden h-24 w-24 opacity-60 sm:block lg:-right-8"
               viewBox="0 0 100 100"
               aria-hidden="true"
             >

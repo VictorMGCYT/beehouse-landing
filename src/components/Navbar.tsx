@@ -24,12 +24,12 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 bg-background/45 backdrop-blur-md border-b border-border transition-shadow duration-200 ${
+      className={`bg-background/45 border-border fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-md transition-shadow duration-200 ${
         scrolled ? "shadow-sm" : "shadow-none"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
           <a href="/" className="flex-shrink-0">
             <img
               src="/logotipo-bee-house.png"
@@ -38,12 +38,12 @@ export default function Navbar() {
             />
           </a>
 
-          <div className="hidden md:flex items-center gap-7">
+          <div className="hidden items-center gap-7 md:flex">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-150"
+                className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors duration-150"
               >
                 {l.label}
               </a>
@@ -55,7 +55,7 @@ export default function Navbar() {
               href="https://beehouse.com.mx/clientes"
               className={cn(
                 buttonVariants({ size: "sm" }),
-                "max-md:hidden rounded-full",
+                "rounded-full max-md:hidden",
               )}
             >
               Iniciar sesión
@@ -63,7 +63,7 @@ export default function Navbar() {
             <button
               onClick={() => setOpen(!open)}
               aria-label="Menú"
-              className="md:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              className="text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg p-2 transition-colors md:hidden"
             >
               {open ? <X className="size-5" /> : <Menu className="size-5" />}
             </button>
@@ -73,23 +73,23 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-200 bg-background border-t border-border ${
+        className={`bg-background border-border overflow-hidden border-t transition-all duration-200 md:hidden ${
           open ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="px-4 py-3 flex flex-col gap-1">
+        <div className="flex flex-col gap-1 px-4 py-3">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={close}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground py-2.5 px-3 rounded-lg hover:bg-muted transition-colors"
+              className="text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg px-3 py-2.5 text-sm font-medium transition-colors"
             >
               {l.label}
             </a>
           ))}
           <a
-            href="#"
+            href="https://beehouse.com.mx/clientes"
             onClick={close}
             className={cn(buttonVariants(), "mt-2 w-full rounded-full")}
           >

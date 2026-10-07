@@ -3,11 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero.astro";
 import HowItWorksNew from "../components/HowItWorksNew";
-import ForBrands from "../components/ForBrands.astro";
-import ForPromoters from "../components/ForPromoters.astro";
-import Features from "../components/Features.astro";
-import CTAFinal from "../components/CTAFinal.astro";
-import Footer from "../components/Footer.astro";
+import ForBrandsNew from "../components/ForBrandsNew";
+import ForPromotersNew from "../components/ForPromotersNew";
+import FeaturesNew from "../components/FeaturesNew";
+import CTAFinalNew from "../components/CTAFinalNew";
+import FooterNew from "../components/FooterNew";
 import HeroNew from "@/components/HeroNew.astro";
 import HoneycombDivider from "@/components/HoneycombDivider.astro";
 ---
@@ -22,10 +22,12 @@ import HoneycombDivider from "@/components/HoneycombDivider.astro";
       class="bg-muted timeline-view animate-fade-in animate-range-[entry_5%_contain_10%]"
     />
     <HowItWorksNew client:load />
-    <ForBrands />
-    <ForPromoters />
-    <Features />
-    <CTAFinal />
+    <ForBrandsNew />
+    <ForPromotersNew />
+    <HoneycombDivider seed={5} class="reveal animate-fade-in bg-background" />
+    <FeaturesNew />
+    <HoneycombDivider seed={8} flip class="reveal animate-fade-in bg-background" />
+    <CTAFinalNew />
   </main>
-  <Footer />
+  <FooterNew />
 </Layout>

@@ -90,12 +90,12 @@ const pos = ([x, y]: readonly [number, number]) => ({
     </svg>
 
     <!-- Pastillas al final de cada línea -->
-    {links.map((l) => (
+    {links.map((l, i) => (
       <a
         href={l.href}
-        style={pos(l.end)}
+        style={{ ...pos(l.end), "animation-delay": `${0.8 + i * 0.12}s` }}
         class:list={[
-          "absolute z-20 hidden -translate-y-1/2 rounded-full bg-amber-400 px-4 py-1 text-sm font-semibold whitespace-nowrap text-white shadow-md transition hover:bg-amber-500 lg:block",
+          "motion-safe:animate-bounce-fade-in absolute z-20 hidden -translate-y-1/2 rounded-full bg-amber-400 px-4 py-1 text-sm font-semibold whitespace-nowrap text-white shadow-md transition hover:bg-amber-500 lg:block",
           l.side === "left" ? "-translate-x-full" : "",
         ]}
       >
@@ -106,7 +106,7 @@ const pos = ([x, y]: readonly [number, number]) => ({
     {tags.map((t) => (
       <span
         style={pos(t.at)}
-        class="absolute hidden -translate-x-1/2 -translate-y-1/2 bg-background px-1 text-xs text-amber-950/70 lg:block"
+        class="motion-safe:animate-fade-in animate-delay-1000 absolute hidden -translate-x-1/2 -translate-y-1/2 bg-background px-1 text-xs text-amber-950/70 lg:block"
       >
         {t.text}
       </span>
@@ -114,7 +114,8 @@ const pos = ([x, y]: readonly [number, number]) => ({
 
     <!-- Logo -->
     <div class="relative z-10 flex flex-col h-full items-center justify-center">
-      <div class="delay-100">
+      <!-- La abeja flota suavemente después de aparecer -->
+      <div class="motion-safe:animate-float animate-duration-[4s] animate-iteration-count-infinite animate-delay-1000">
         <img
           src="/logotipo-bee-house.png"
           alt="BeeHouse"
@@ -123,7 +124,7 @@ const pos = ([x, y]: readonly [number, number]) => ({
         />
         <div class="animate-expand-horizontally h-3 w-full bg-amber-950"></div>
       </div>
-      <div class="mt-8 px-4 text-center text-2xl font-bold sm:text-3xl lg:absolute lg:bottom-20 lg:left-1/2 lg:mt-0 lg:-translate-x-1/2 lg:translate-y-1/2 lg:px-0 lg:text-4xl">
+      <div class="motion-safe:animate-blurred-fade-in animate-delay-500 mt-8 px-4 text-center text-2xl font-bold sm:text-3xl lg:absolute lg:bottom-20 lg:left-1/2 lg:mt-0 lg:-translate-x-1/2 lg:translate-y-1/2 lg:px-0 lg:text-4xl">
         <p class="text-amber-600">Tu marca presente</p>
         <p class="text-amber-850">
           En cada{" "}
