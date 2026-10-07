@@ -46,6 +46,13 @@ const tags = [
 // Palabras que se autoescriben después de "En cada"
 const typedWords = ["tienda", "ciudad", "punto de venta", "rincón de México"];
 
+// Datos rápidos para móvil (del diseño)
+const stats = [
+  { value: "100%", label: "digital" },
+  { value: "Bajo", label: "demanda" },
+  { value: "360°", label: "visibilidad" },
+];
+
 const pos = ([x, y]: readonly [number, number]) => ({
   left: `${(x / VB_W) * 100}%`,
   top: `${(y / VB_H) * 100}%`,
@@ -53,9 +60,9 @@ const pos = ([x, y]: readonly [number, number]) => ({
 ---
 
 <section class="relative flex min-h-[calc(80vh)] items-center justify-center overflow-hidden">
-  <!-- Panal decorativo en los laterales (solo xl) -->
+  <!-- Panal decorativo: arriba en móvil, en los laterales en lg -->
   <div
-    class="honeycomb pointer-events-none absolute inset-0 hidden lg:block"
+    class="honeycomb pointer-events-none absolute inset-0"
     aria-hidden="true"
   ></div>
 
@@ -116,7 +123,7 @@ const pos = ([x, y]: readonly [number, number]) => ({
         />
         <div class="animate-expand-horizontally h-3 w-full bg-amber-950"></div>
       </div>
-      <div class="absolute hidden lg:block bottom-20 left-1/2 -translate-x-1/2 translate-y-1/2 text-center text-4xl font-bold">
+      <div class="mt-8 px-4 text-center text-2xl font-bold sm:text-3xl lg:absolute lg:bottom-20 lg:left-1/2 lg:mt-0 lg:-translate-x-1/2 lg:translate-y-1/2 lg:px-0 lg:text-4xl">
         <p class="text-amber-600">Tu marca presente</p>
         <p class="text-amber-850">
           En cada{" "}
@@ -131,6 +138,18 @@ const pos = ([x, y]: readonly [number, number]) => ({
           </span>
         </p>
       </div>
+
+      <!-- Datos rápidos (solo móvil/tablet; en desktop las pastillas ocupan ese rol) -->
+      <ul class="mt-6 flex flex-wrap justify-center gap-2 px-4 lg:hidden">
+        {stats.map((s, i) => (
+          <li
+            class="animate-fade-in-up rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-900"
+            style={`animation-delay: ${0.3 + i * 0.1}s`}
+          >
+            <span class="text-amber-600">{s.value}</span> {s.label}
+          </li>
+        ))}
+      </ul>
     </div>
   </div>
 </section>
@@ -183,6 +202,14 @@ const pos = ([x, y]: readonly [number, number]) => ({
         transparent 100%
       );
     mask-composite: intersect;
+  }
+
+  /* En móvil: solo una franja arriba que se desvanece hacia abajo */
+  @media (width < 64rem) {
+    .honeycomb {
+      opacity: 0.3;
+      mask-image: linear-gradient(to bottom, black 0%, transparent 35%);
+    }
   }
 
   .caret {
